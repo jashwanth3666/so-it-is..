@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sooo this is!!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-background {
+      background: linear-gradient(180deg, rgba(255, 208, 229, 1) 0%, rgba(255, 232, 242, 1) 36%, rgba(255, 255, 255, 1) 100%);
+    }
+    .bounce2 {
+      animation: bounce2 2s ease infinite;
+    }
+    @keyframes bounce2 {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body class="gradient-background">
+  <div class="flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-4">
+      <img id="imageDisplay" src="./images/image1.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px]" style="object-fit: cover;" />
+      <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">Sooo,Will you be my Valentine?👉👈 </h2>
+      <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
+        <button id="yesButton" class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
+          Yes
+        </button>
+        <button id="noButton" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium transition hover:bg-red-700 h-12 min-w-[75px] px-4 py-2 bg-red-500 text-white">
+          No
+        </button>
+      </div>
+
+      
+      <button id="specialButton" class="hidden mt-4 px-6 py-3 bg-pink-500 text-white rounded-md text-lg hover:bg-pink-600">
+        Here is something special for you
+      </button>
+
+      <div id="specialMessage" class="hidden mt-4 text-center text-2xl text-[#bd1e59] font-bold">
+        Your myyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+        <br>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+        <br>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+        <br>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+        <br>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy....
+        <br>
+        <button id="seeMoreButton" class="mt-4 px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600">See more</button>
+      </div>
+
+      <div id="finalMessage" class="hidden mt-4 text-3xl font-bold text-[#ff4d6d] text-center">
+        Your my cute little pookiee parato potatooo....... I LOVE u so much ❤️
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const imageDisplay = document.getElementById('imageDisplay');
+    const valentineQuestion = document.getElementById('valentineQuestion');
+    const responseButtons = document.getElementById('responseButtons');
+    const specialButton = document.getElementById('specialButton');
+    const specialMessage = document.getElementById('specialMessage');
+    const seeMoreButton = document.getElementById('seeMoreButton');
+    const finalMessage = document.getElementById('finalMessage');
+
+    let noClickCount = 0;
+    let buttonHeight = 48;
+    let buttonWidth = 80;
+    let fontSize = 20;
+
+    const imagePaths = [
+      "./images/image1.gif",
+      "./images/image2.gif",
+      "./images/image3.gif",
+      "./images/image4.gif",
+      "./images/image5.gif",
+      "./images/image6.gif",
+      "./images/image7.gif"
+    ];
+
+    
+      noButton.addEventListener('click', function() {
+        if (noClickCount < 5) {
+          noClickCount++;
+          imageDisplay.src = imagePaths[noClickCount];
+          buttonHeight += 35;
+          buttonWidth += 35;
+          fontSize += 25;
+          yesButton.style.height = `${buttonHeight}px`;
+          yesButton.style.width = `${buttonWidth}px`;
+          yesButton.style.fontSize = `${fontSize}px`;
+          
+          if (noClickCount < 6) {
+          noButton.textContent = ["Unfortunately No", "Sathvviiii?", "Pookie please", "Bangarammmm :(", "You're breaking my heart", "I'm gonna cry..."][noClickCount];
+          if (noClickCount === 5) { // When it reaches "I'm gonna cry..."
+          noButton.addEventListener("mouseover", function() {
+            noButton.style.opacity = "0"; // Hide the button on hover
+          });
+  
+          noButton.addEventListener("mouseleave", function() {
+            noButton.style.opacity = "1"; // Show the button again when the mouse leaves
+          });
+        }
+      }
+    }
+  });
+    yesButton.addEventListener('click', () => {
+      imageDisplay.src = './images/image7.gif';
+      valentineQuestion.textContent = "Yayyy!! :3";
+      responseButtons.style.display = 'none';
+      confetti();
+      setTimeout(() => {
+        specialButton.classList.remove('hidden'); 
+      }, 1000);
+    });
+
+    specialButton.addEventListener('click', () => {
+      specialButton.style.display = 'none';
+      specialMessage.classList.remove('hidden');
+    });
+
+    seeMoreButton.addEventListener('click', () => {
+      specialMessage.style.display = 'none';
+      finalMessage.classList.remove('hidden'); 
+    });
+
+  </script>  
+</body>
+</html>
