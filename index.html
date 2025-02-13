@@ -138,6 +138,29 @@
       specialMessage.style.display = 'none';
       finalMessage.classList.remove('hidden'); 
     });
+    const sendMessageSection = document.getElementById("sendMessageSection");
+const sendButtons = document.querySelectorAll(".sendButton");
+const thankYouMessage = document.getElementById("thankYouMessage");
+
+// Show send message section after "I LOVE u so much ❤️"
+seeMoreButton.addEventListener("click", () => {
+  setTimeout(() => {
+    sendMessageSection.classList.remove("hidden");
+  }, 1000);
+});
+
+// Show "Thank youuu... ❤️" when any button is clicked
+sendButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    thankYouMessage.classList.remove("hidden");
+    thankYouMessage.style.opacity = "0";
+    setTimeout(() => {
+      thankYouMessage.style.opacity = "1";
+      thankYouMessage.style.transition = "opacity 0.5s ease-in-out";
+    }, 100);
+  });
+});
+
 
   </script>  
 </body>
