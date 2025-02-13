@@ -160,6 +160,15 @@ sendButtons.forEach(button => {
     }, 100);
   });
 });
+    seeMoreButton.addEventListener("click", () => {
+  specialMessage.style.display = "none";
+  finalMessage.classList.remove("hidden");
+
+  // Make sure the send message section appears
+  setTimeout(() => {
+    sendMessageSection.classList.remove("hidden");
+  }, 1000);
+});
 
 
   </script>  
