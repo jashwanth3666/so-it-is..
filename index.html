@@ -33,7 +33,7 @@
         </button>
       </div>
 
-      
+
       <button id="specialButton" class="hidden mt-4 px-6 py-3 bg-pink-500 text-white rounded-md text-lg hover:bg-pink-600">
         Ni kosameeee....
       </button>
@@ -45,6 +45,7 @@
         <br>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
         <br>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy....
         <br>
+        
         <button id="seeMoreButton" class="mt-4 px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600">chepesthar mari!! <br>sare cheptha le tap me</button>
       </div>
 
@@ -82,7 +83,7 @@
       "./images/image7.gif"
     ];
 
-    
+
       noButton.addEventListener('click', function() {
         if (noClickCount < 5) {
           noClickCount++;
@@ -90,17 +91,17 @@
           buttonHeight += 35;
           buttonWidth += 35;
           fontSize += 25;
-          yesButton.style.height = ${buttonHeight}px;
-          yesButton.style.width = ${buttonWidth}px;
-          yesButton.style.fontSize = ${fontSize}px;
-          
+          yesButton.style.height = `${buttonHeight}px`;
+          yesButton.style.width = `${buttonWidth}px`;
+          yesButton.style.fontSize = `${fontSize}px`;
+
           if (noClickCount < 6) {
           noButton.textContent = ["Unfortunately No", "Sathvviiii?", "Pookie please", "Bangarammmm :(", "You're breaking my heart", "I'm gonna cry..."][noClickCount];
           if (noClickCount === 5) { // When it reaches "I'm gonna cry..."
           noButton.addEventListener("mouseover", function() {
             noButton.style.opacity = "0"; // Hide the button on hover
           });
-  
+
           noButton.addEventListener("mouseleave", function() {
             noButton.style.opacity = "1"; // Show the button again when the mouse leaves
           });
@@ -130,4 +131,4 @@
 
   </script>  
 </body>
-</html> 
+</html>
